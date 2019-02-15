@@ -1,0 +1,12 @@
+{
+  "firstRow": ["ID","Name","DescriptionSK","Regular_price","PriceOpt","In stock?","Images","Price","Бренд","Tags","Categories"],
+  "replace":[
+    {"from": "a1 wfw a1","to": "aaaz"},
+    {"from": "b1","to": "bbbz"},
+    {"from": "c1","to": "cccz"},
+    {"from": "xyz","to": "wdcweeecec"}
+  ],
+  "remove": [
+   "-","e2"
+  ]
+}
