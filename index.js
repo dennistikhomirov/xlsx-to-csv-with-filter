@@ -8,7 +8,7 @@ async function run() {
     const workSheets = xlsx.parse(`./data/testParser.xlsx`);
 
     const filter = JSON.parse(fs.readFileSync("filter.json", "utf8"));
-    const file = './data/result/result' + new Date().toUTCString() + '.csv'
+    const file = './results/results' + new Date().toUTCString() + '.csv'
     let data = workSheets[0].data
     console.log(data)
     fs.ensureFileSync(file)
