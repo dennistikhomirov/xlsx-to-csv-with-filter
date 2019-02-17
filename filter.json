@@ -1,12 +1,33 @@
 {
-  "firstRow": ["ID","Name","DescriptionSK","Regular_price","PriceOpt","In stock?","Images","Price","Бренд","Tags","Categories"],
+  "sourceFile": "/Users/dennis/Desktop/price_list_kissexpo.xlsx",
+  "resultPath": "",
+
+  "firstRow": ["ID","Name","Description","SKU","Price opt","In stock?","Images","Price","Бренд","Tags","Categories"],
   "replace":[
-    {"from": "a1 wfw a1","to": "aaaz"},
-    {"from": "b1","to": "bbbz"},
-    {"from": "c1","to": "cccz"},
-    {"from": "xyz","to": "wdcweeecec"}
+    {"from": "Чулки, колготки","to": "Чулки и колготки","where": "Categories"
+    },
+    {"from": "Фетиш, БДСМ","to": "Фетиш и БДСМ","where": "Categories"
+    },
+    {"from": "Лубриканты, гели, крема, масла, феромоны","to": "Интимная косметика","where": "Categories"
+    },
+    {"from": "Шарики, цепочки","to": "Шарики и цепочки","where": "Categories"
+    },
+    {"from": "БДСМ металл, CBT","to": "CBT: БДСМ для него","where": "Categories"
+    },
+    {"from": "БДСМ кляпы, маски, ошейники","to": "кляпы маски ошейники","where": "Categories"
+    },
+    {"from": "Бэби долл, сорочки","to": "Бэби долл и сорочки","where": "Categories"
+    },
+    {"from": "-","to": "","where": "Categories"
+    },
+    {"from": "|","to": ",","where": "Categories"
+    },
+    {"from": "Всё для вечеринки, эросувениры","to": "Всё для вечеринки и эро-сувениры","where": "Categories"
+    },
+    {"from": "HiTech, Ротаторы","to": "Hi-Tech и Ротаторы","where": "Categories"
+    }
   ],
   "remove": [
-   "-","e2"
+
   ]
 }

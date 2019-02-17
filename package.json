@@ -5,12 +5,15 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "convert": "node index.js"
+    "convert": "node index.js",
+    "scrape": "node scraper.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chromedriver": "^2.46.0",
     "fs-extra": "^7.0.1",
-    "node-xlsx": "^0.14.1"
+    "node-xlsx": "^0.14.1",
+    "selenium-webdriver": "^3.6.0"
   }
 }
