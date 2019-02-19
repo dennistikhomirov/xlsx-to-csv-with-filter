@@ -2,8 +2,20 @@
   "sourceFile": "/Users/dennis/Desktop/price_list_kissexpo.xlsx",
   "resultPath": "",
 
-  "firstRow": ["ID","Name","Description","SKU","Price opt","In stock?","Images","Price","Бренд","Tags","Categories"],
+  "firstRow": ["ID","Name","Description","SKU","Price opt","In stock?","Images","Price recommended","Бренд","Tags","Categories","Price"],
+  "price": { "multiply":"0.9", "base": "Price recommended"},
+  "exclude": [
+    {"column":"In stock?","attr": "0"},
+    {"column":"Price","attr": "0"},
+    {"column":"Price","attr": "0,0"},
+    {"column":"Price","attr": "0,00"}
+  ],
   "replace":[
+
+    {"from": "Эротическое бельё оптом","to": "Эротическое бельё","where": "Categories"
+    },
+    {"from": "Электро-вибро","to": "Электростимуляторы","where": "Categories"
+    },
     {"from": "Чулки, колготки","to": "Чулки и колготки","where": "Categories"
     },
     {"from": "Фетиш, БДСМ","to": "Фетиш и БДСМ","where": "Categories"
@@ -14,9 +26,11 @@
     },
     {"from": "БДСМ металл, CBT","to": "CBT: БДСМ для него","where": "Categories"
     },
-    {"from": "БДСМ кляпы, маски, ошейники","to": "кляпы маски ошейники","where": "Categories"
+    {"from": "БДСМ кляпы, маски, ошейники","to": "Кляпы маски ошейники","where": "Categories"
     },
     {"from": "Бэби долл, сорочки","to": "Бэби долл и сорочки","where": "Categories"
+    },
+    {"from": "Интим товары оптом","to": "Секс игрушки","where": "Categories"
     },
     {"from": "-","to": "","where": "Categories"
     },
@@ -25,6 +39,8 @@
     {"from": "Всё для вечеринки, эросувениры","to": "Всё для вечеринки и эро-сувениры","where": "Categories"
     },
     {"from": "HiTech, Ротаторы","to": "Hi-Tech и Ротаторы","where": "Categories"
+    },
+    {"from": "Наборы","to": "Комплекты секс-игрушек","where": "Categories"
     }
   ],
   "remove": [

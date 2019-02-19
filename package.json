@@ -13,6 +13,9 @@
   "dependencies": {
     "chromedriver": "^2.46.0",
     "fs-extra": "^7.0.1",
+    "jquery": "^3.3.1",
+    "jsdom": "^13.2.0",
+    "node-fetch": "^2.3.0",
     "node-xlsx": "^0.14.1",
     "selenium-webdriver": "^3.6.0"
   }
