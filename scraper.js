@@ -26,10 +26,10 @@ async function test() {
 scrapSexToys()
 
 async function scrapSexToys() {
-    let counterImages=0
-    //const images = new Map()
+    const filter = JSON.parse(fs.readFileSync("filter.json", "utf8"))
+    let counterImages = 0
     let linksProducts = []
-    let a = []
+
     /*
         driver = await startChrome()
         linksProducts = await collectProductLinks("http://kissexpo.by/intim-tovary-optom/")
@@ -39,43 +39,50 @@ async function scrapSexToys() {
 
 
 
-        const fileProducts = './results/json/productsLinks.json'
+        const fileProducts = './json/productsLinks.json'
         fs.ensureFileSync(fileProducts)
         fs.writeFileSync(fileProducts, JSON.stringify({ links: linksProducts }))
         //console.log("Products were found:  " + linksProducts.length)
 
-        const obj = JSON.parse(fs.readFileSync("./results/json/productsLinks.json", "utf8"))
+        const obj = JSON.parse(fs.readFileSync("./json/productsLinks.json", "utf8"))
         console.log("File products:  " + obj.links.length)
         */
 
     // collect product's image's links
     let html, DOM, links
-    const obj = JSON.parse(fs.readFileSync("./results/json/productsLinks.json", "utf8"))
+    const obj = JSON.parse(fs.readFileSync("./json/productsLinks.json", "utf8"))
+    const fileImagesLinks = filter.imagesDest
+    fs.ensureFileSync(fileImagesLinks)
 
     let out = { elements: [] }
 
-    for ( let i = 0; obj.links.length; i++ ) {
+    for ( let i = 0; i <obj.links.length; i++ ) {
         console.log(obj.links[i])
         html = await fetch(obj.links[i]).then(res => res.text())
         DOM = new JSDOM(html).window.document
 
         let element = { key: "", values: [] }
         element.key = (await DOM.getElementsByName('product_id'))[0].value
-        console.log(element.key)
+        console.log()
+        console.log("ID: " + element.key)
         links = (await DOM.getElementsByClassName('thumbnail'))
-        console.log("links.length" + links.length)
+
         for ( let j = 0; j < links.length; j++ ) {
             await element.values.push(links[j].href)
             counterImages++
             console.log(element.values[j])
         }
-        console.log("element" + element)
+
         await out.elements.push(element)
+        console.log(out.elements.length + "  products were scanned")
+
+        if ( counterImages % 10 === 0 ) {
+            fs.writeFileSync(fileImagesLinks, JSON.stringify(out))
+            console.log(counterImages + "  images were saved")
+        }
     }
-    console.log(out.elements.length + "  products were scanned")
-    console.log(counterImages + "  images were saved")
-    const fileImagesLinks = './results/json/imagesLinks.json'
-    fs.ensureFileSync(fileImagesLinks)
+
+
     fs.writeFileSync(fileImagesLinks, JSON.stringify(out))
 
 

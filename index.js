@@ -18,12 +18,31 @@ async function run() {
     fs.ensureFileSync(file)
     fs.appendFileSync(file, filter.firstRow + "\n")
 
+    let images = new Map()
+
+    const linksImages = JSON.parse(fs.readFileSync(filter.imagesDest, "utf8"))
+    for ( let i = 0; i < linksImages.elements.length; i++ ) {
+        images.set(linksImages.elements[i].key, linksImages.elements[i].values)
+    }
+    console.log(images)
+
     const workSheets = xlsx.parse(sourceFile)
     let data = workSheets[0].data
     let isExclude
+    let id
+    let values=[]
 
     for ( let i = 1; i < data.length; i++ ) {
         isExclude = false
+
+        //images
+        id = data[i][filter.firstRow.indexOf("ID")].toString()
+        console.log(id)
+        values = images.get(id)
+        console.log(values)
+        for (let j=0;j<values.length;j++){
+            data[i][filter.firstRow.indexOf("Images")] += (","+values[j])
+        }
 
         //price
         const indexPrice = filter.firstRow.indexOf("Price")
@@ -40,7 +59,7 @@ async function run() {
         }
 
         if ( data[i][indexPrice] <= data[i][filter.firstRow.indexOf("Price opt")] ) {
-            data[i][indexPrice] = await convertToString((parseFloat(data[i][indexPrice] )*1.3) * (1 / filter.price.multiply))
+            data[i][indexPrice] = await convertToString((parseFloat(data[i][indexPrice]) * 1.3) * (1 / filter.price.multiply))
         }
         if ( data[i][indexPrice] < 1 ) isExclude = true
 

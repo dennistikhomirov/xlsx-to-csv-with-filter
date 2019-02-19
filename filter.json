@@ -1,8 +1,9 @@
 {
-  "sourceFile": "/Users/dennis/Desktop/price_list_kissexpo.xlsx",
+  "sourceFile": "/Users/dennis/Desktop/test13.xlsx",
   "resultPath": "",
 
   "firstRow": ["ID","Name","Description","SKU","Price opt","In stock?","Images","Price recommended","Бренд","Tags","Categories","Price"],
+  "imagesDest": "./json/imagesLinks.json",
   "price": { "multiply":"0.9", "base": "Price recommended"},
   "exclude": [
     {"column":"In stock?","attr": "0"},
