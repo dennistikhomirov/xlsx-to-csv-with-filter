@@ -12,7 +12,18 @@
     {"column":"Price","attr": "0,00"}
   ],
   "replace":[
-
+    {"from": "http://kissexpo.by/image/catalog/2601/^85dcc3ef5876aefe9fb91fbb4de02526e55f3908ec2547bdd1^pimgpsh_fullsize1_distr.jpg","to": "","where": "Images"
+    },
+    {"from": "http://kissexpo.by/image/catalog/lovetoy/probki/631377b5a3e747a3827d665f56eb51e6fcc3152bd980e29dd6pimgpsh_fullsize_distr.jpg","to": "","where": "Images"
+    },
+    {"from": "http://kissexpo.by/image/data/igluvb,jb,.png","to": "","where": "Images"
+    },
+    {"from": "http://kissexpo.by/image/data/ug,jcdetsngfch.png","to": "","where": "Images"
+    },
+    {"from": "http://kissexpo.by/image/catalog/lovetoy/probki/^631377b5a3e747a3827d665f56eb51e6fcc3152bd980e29dd6^pimgpsh_fullsize_distr.jpg","to": "","where": "Images"
+    },
+    {"from": "БДСМ ударные девайсы","to": "Плетки","where": "Categories"
+    },
     {"from": "Эротическое бельё оптом","to": "Эротическое бельё","where": "Categories"
     },
     {"from": "Электро-вибро","to": "Электростимуляторы","where": "Categories"
