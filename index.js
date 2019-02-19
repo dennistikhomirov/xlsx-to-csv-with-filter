@@ -18,13 +18,13 @@ async function run() {
     fs.ensureFileSync(file)
     fs.appendFileSync(file, filter.firstRow + "\n")
 
+
     let images = new Map()
 
     const linksImages = JSON.parse(fs.readFileSync(filter.imagesDest, "utf8"))
     for ( let i = 0; i < linksImages.elements.length; i++ ) {
         images.set(linksImages.elements[i].key, linksImages.elements[i].values)
     }
-    console.log(images)
 
     const workSheets = xlsx.parse(sourceFile)
     let data = workSheets[0].data
@@ -37,9 +37,7 @@ async function run() {
 
         //images
         id = data[i][filter.firstRow.indexOf("ID")].toString()
-        console.log(id)
         values = images.get(id)
-        console.log(values)
         for (let j=0;j<values.length;j++){
             data[i][filter.firstRow.indexOf("Images")] += (","+values[j])
         }
@@ -63,8 +61,7 @@ async function run() {
         }
         if ( data[i][indexPrice] < 1 ) isExclude = true
 
-        console.log("ID = " + data[i][0] + "  Price opt  =" + data[i][4] +
-            "  Price rec  =" + data[i][7] + "  Price =" + data[i][indexPrice])
+       // console.log("ID = " + data[i][0] + "  Price opt  =" + data[i][4] + "  Price rec  =" + data[i][7] + "  Price =" + data[i][indexPrice])
 
         // exclude
         let where
@@ -95,7 +92,7 @@ async function run() {
     }
     fs.appendFileSync(fileLog, "\n" + counterProducts + " products were IMPORTED\n")
     fs.appendFileSync(fileLog, (data.length - 1 - counterProducts) + " products were SKIPPED")
-    fs.appendFileSync(fileLog, (data.length + counterProducts) + " ALL PRODUCTS")
+    fs.appendFileSync(fileLog, (data.length -1) + " TOTAL PRODUCTS")
 }
 
 async function remove(data) {
